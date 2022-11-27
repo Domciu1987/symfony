@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista produktów{% endblock %}
+
+{% block body %}
+    <div>
+        <a href="{{ path('logout') }}">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4">
+                Wyloguj
+            </button>
+        </a>
+    </div>
+        <table class="border-collapse border border-slate-400 table-auto w-full text-sm m-4">
+            <thead class="bg-gray-300">
+                <tr>
+                    <th class="border border-slate-300 w-1/4 px-4 py-2">Nazwa produktu</th>
+                    <th class="border border-slate-300 w-1/4 px-4 py-2">Ilość</th>
+                    <th class="border border-slate-300 w-1/4 px-4 py-2">Plik</th>
+                </tr>
+            <thead>
+            <tbody class="bg-white dark:bg-slate-100">
+            {% for product in products %}
+                <tr>
+                    <td class="border border-slate-300 px-4 py-2">{{ product.name }}</td>
+                    <td class="border border-slate-300 px-4 py-2">{{ product.current }}</td>
+                    <td class="border border-slate-300 px-4 py-2"><a href="{{ product.brochureFilename }}">{{ product.brochureFilename }}</a></td>
+                    <td class="border border-slate-300 px-4 py-2">
+                        <a href="{{ path('out',{'id': product.id}) }}">
+                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                Wydanie
+                            </button>
+                        </a>
+                    </td>
+                    <td class="border border-slate-300 px-4 py-2">
+                        <a href="{{ path('add',{'id': product.id}) }}">
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                Przyjęcie
+                            </button>
+                        </a>
+                    </td>
+                </tr>                
+            {% endfor %}
+            <tbody>
+        </table>
+    <div>
+        <a href="{{ path('addnew') }}">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4">
+                Dodaj nowy produkt
+            </button>
+        </a>
+    </div>
+{% endblock %}

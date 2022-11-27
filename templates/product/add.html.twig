@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Przyjęcie na magazyn{% endblock %}
+
+{% block body %}
+<div class="w-96">
+    <div class="text-center px-4 py-2 m-2">
+        Nazwa produktu: {{product.name}}
+    </div>
+    <div class="text-center px-4 py-2 m-2">
+        Stan magazynowy: {{product.current}}
+    </div>
+    <div class="text-center px-4 py-2 m-2">
+        {{ form_start(form)}}
+        {{ form_end(form) }}
+    </div>
+    <div class="text-center px-4 py-2 m-2">
+        <a href="{{ path('user') }}">
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                Powrót do listy produktów
+            </button>
+        </a>
+    </div>
+</div>
+{% endblock %}
